@@ -30,7 +30,7 @@ namespace AlgoCpp
 	}
 
 	// In ASCII upper case latin alphas starts on 65 num, lower case - on 97
-	void CaesarEncrypt( char* start, char* end, int diff )
+	void CaesarEncryptDecrypt( char* start, char* end, int diff )
 	{
 		for( char* i = start; i < end; i++ )
 		{
@@ -42,6 +42,14 @@ namespace AlgoCpp
 			{
 				*i = char( int( (*i + diff - 97)%26 + 97 ) );
 			}
+		}
+	}
+
+	void XorEncryptDecryt( char* key, size_t key_length, char* data, size_t data_length )
+	{
+		for( size_t it = 0; it < data_length; it++ )
+		{
+			data[it] = data[it] ^ key[it % key_length];
 		}
 	}
 
