@@ -7,6 +7,7 @@ C++ Realizations of Some Algorithms
 * XOR Cipher - simple symmetric encryption by passed key via XOR (^) byte operation
 * Fibonacci Sequence - recursive, iterator and formula realizations are provided
 * Factorial Sequence - recursive and iterator realizations are provided
+* RLE Compression - simple RLE compression algorithm realization for strings, limitation - no digits in unencoded line and valid format for encoded line
 
 # Usage example
 Ready usage example in main.cpp
