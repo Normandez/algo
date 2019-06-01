@@ -1,6 +1,8 @@
 #ifndef ALGO_CPP_H
 #define ALGO_CPP_H
 
+#include <string>
+
 namespace AlgoCpp
 {
 
@@ -108,6 +110,61 @@ namespace AlgoCpp
 	{
 		unsigned long res = 1;
 		for( unsigned i = 2; i <= n; i++ ) res *= i;
+		return res;
+	}
+
+	// Encode format [N]V, where N - number of duplicates, V - duplicated value
+	// N is empty when duplicates count is 0
+	// Works correctly only with strings which not contains digits
+	std::string RLE_Encode( std::string& input )
+	{
+		std::string res = "";
+
+		int repeat_count = 1;
+		for( size_t it = 1; it <= input.length(); it++ )
+		{
+			if( it != input.length() && input[it - 1] == input[it] )
+			{
+				repeat_count++;
+			}
+			else if( repeat_count != 1 )
+			{
+				res += std::to_string(repeat_count) + input[it - 1];
+				repeat_count = 1;
+			}
+			else
+			{
+				res += input[it - 1];
+			}
+		}
+
+		return res;
+	}
+	std::string RLE_Decode( std::string& input )
+	{
+		std::string res = "";
+
+		std::string repeat_count_str = "";
+		for( size_t it = 0; it < input.length(); it++ )
+		{
+			if( isdigit(input[it]) )
+			{
+				repeat_count_str += input[it];
+			}
+			else
+			{
+				if( !repeat_count_str.empty() )
+				{
+					for( int repeat_cnt_int = std::stoi( repeat_count_str ); repeat_cnt_int != 0; repeat_cnt_int-- ) res += input[it];
+					repeat_count_str.clear();
+				}
+				else
+				{
+					res += input[it];
+				}
+			}
+		}
+
 		return res;
 	}
 
