@@ -116,7 +116,7 @@ namespace AlgoCpp
 	// Encode format [N]V, where N - number of duplicates, V - duplicated value
 	// N is empty when duplicates count is 0
 	// Works correctly only with strings which not contains digits
-	std::string RLE_Encode( std::string& input )
+	std::string RLE_Encode( const std::string& input )
 	{
 		std::string res = "";
 
@@ -140,7 +140,7 @@ namespace AlgoCpp
 
 		return res;
 	}
-	std::string RLE_Decode( std::string& input )
+	std::string RLE_Decode( const std::string& input )
 	{
 		std::string res = "";
 
