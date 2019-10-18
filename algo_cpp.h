@@ -168,13 +168,13 @@ namespace AlgoCpp
 		return res;
 	}
 
-	// Generates simple permutations.
+	// Generates permutations.
 	// Input params:
 	//		OUT '_permutations' - string with result permutations, every starts from new line
 	//		IN 'input_seq' - input sorted sequence on which permutations generates
 	//		IN 'input_seq_size' - size of sorted input sequence
 	//		IN 'iter' - permutation count (starts from 0-permutation)
-	void GetPermutationsNoRepeats( std::string& _permutations, int* input_seq, size_t input_seq_size, size_t iter = 0 )
+	void GetPermutations( std::string& _permutations, int* input_seq, size_t input_seq_size, size_t iter = 0 )
 	{
 		if( iter == input_seq_size )
 		{
@@ -185,8 +185,9 @@ namespace AlgoCpp
 		{
 			for ( size_t it = iter; it < input_seq_size; it++ )
 			{
+				if ( input_seq[it] == input_seq[it + 1] ) continue;
 				std::swap( input_seq[iter], input_seq[it] );
-				GetPermutationsNoRepeats( _permutations, input_seq, input_seq_size, iter + 1 );
+				GetPermutations( _permutations, input_seq, input_seq_size, iter + 1 );
 				std::swap( input_seq[iter], input_seq[it] );
 			}
 		}
