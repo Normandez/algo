@@ -168,6 +168,30 @@ namespace AlgoCpp
 		return res;
 	}
 
+	// Generates simple permutations.
+	// Input params:
+	//		OUT '_permutations' - string with result permutations, every starts from new line
+	//		IN 'input_seq' - input sorted sequence on which permutations generates
+	//		IN 'input_seq_size' - size of sorted input sequence
+	//		IN 'iter' - permutation count (starts from 0-permutation)
+	void GetPermutationsNoRepeats( std::string& _permutations, int* input_seq, size_t input_seq_size, size_t iter = 0 )
+	{
+		if( iter == input_seq_size )
+		{
+			for ( size_t it = 0; it < input_seq_size; it++ ) _permutations.append( std::to_string(input_seq[it]) + " " );
+			_permutations.append("\n");
+		}
+		else
+		{
+			for ( size_t it = iter; it < input_seq_size; it++ )
+			{
+				std::swap( input_seq[iter], input_seq[it] );
+				GetPermutationsNoRepeats( _permutations, input_seq, input_seq_size, iter + 1 );
+				std::swap( input_seq[iter], input_seq[it] );
+			}
+		}
+	}
+
 }
 
 #endif // ALGO_CPP_H
