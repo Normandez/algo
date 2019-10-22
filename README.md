@@ -8,7 +8,8 @@ C++ Realizations of Some Algorithms
 * Fibonacci Sequence - recursive, iterator and formula realizations are provided
 * Factorial Sequence - recursive and iterator realizations are provided
 * RLE Compression - simple RLE compression algorithm realization for strings, limitation - no digits in unencoded line and valid format for encoded line
-* Permutation Generation - generation of permutation sequences.
+* Permutation Generation - generation of permutation sequences
+* Catalan number - value generation of specified element of Catalan sequence. Using for tasks like "Number of possible unique BSTs" or "Number of possible open/close parentheses".
 
 # Usage example
 Ready usage example in main.cpp
