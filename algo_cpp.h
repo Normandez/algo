@@ -2,6 +2,7 @@
 #define ALGO_CPP_H
 
 #include <string>
+#include <vector>
 
 namespace AlgoCpp
 {
@@ -191,6 +192,24 @@ namespace AlgoCpp
 				std::swap( input_seq[iter], input_seq[it] );
 			}
 		}
+	}
+
+	// Calculates Catalan number via recurrent expression
+	// 'n' - number of needed Catalan sequence value (value returns)
+	int CatalanNumber( int n )
+	{
+		std::vector<int> result = { 1, 1 };
+
+		for ( int count = 2; count < n + 1; count++ )
+		{
+			result.push_back(0);
+			for( int root = 1; root < count + 1; root++ )
+			{
+				result.back() += result[root - 1] * result[count - root];
+			}
+		}
+
+		return result[n];
 	}
 
 }
