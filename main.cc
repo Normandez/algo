@@ -57,7 +57,7 @@ static void destroy_tree(Node* root)
     delete root;
 }
 
-void Run_BSTTraversal()
+static void Run_BSTTraversal()
 {
     std::cout << "==== BST Traversal\n";
 
@@ -83,7 +83,7 @@ static void print(const std::string& title, const Sequence& seq)
     std::cout << std::endl;
 }
 
-void Run_LookAndSaySequence()
+static void Run_LookAndSaySequence()
 {
     std::cout << "==== Look-and-say sequence\n";
 
