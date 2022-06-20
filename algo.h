@@ -214,7 +214,7 @@ int CatalanNumber(int n)
 // Binary Search Tree (BST) traversal
 // The node must have Node::root, Node::left and Node::right pointers
 template<class Node>
-void bst_traversal(Node* root, std::function<void(Node*)> f = nullptr)
+void BSTTraversal(Node* root, std::function<void(Node*)> f = nullptr)
 {
     if (!root)
         return;
@@ -222,8 +222,8 @@ void bst_traversal(Node* root, std::function<void(Node*)> f = nullptr)
     if (f)
         f(root);
 
-    bst_traversal<Node>(root->left, f);
-    bst_traversal<Node>(root->right, f);
+    BSTTraversal<Node>(root->left, f);
+    BSTTraversal<Node>(root->right, f);
 }
 }
 

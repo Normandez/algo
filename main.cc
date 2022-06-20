@@ -34,7 +34,7 @@ int main(int argc, char** argv)
     // root->left->right
     root->left->right = new Node("root->left->right");
 
-    AlgoCpp::bst_traversal<Node>(root, std::function<void(Node*)>(f));
+    AlgoCpp::BSTTraversal<Node>(root, std::function<void(Node*)>(f));
 
     return 0;
 }
