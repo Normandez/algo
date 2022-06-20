@@ -2,6 +2,7 @@
 #define ALGO_H
 
 #include <cmath>
+#include <functional>
 #include <string>
 #include <vector>
 
@@ -208,6 +209,21 @@ int CatalanNumber(int n)
     }
 
     return result[n];
+}
+
+// Binary Search Tree (BST) traversal
+// The node must have Node::root, Node::left and Node::right pointers
+template<class Node>
+void bst_traversal(Node* root, std::function<void(Node*)> f = nullptr)
+{
+    if (!root)
+        return;
+
+    if (f)
+        f(root);
+
+    bst_traversal<Node>(root->left, f);
+    bst_traversal<Node>(root->right, f);
 }
 }
 

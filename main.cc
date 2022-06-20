@@ -2,25 +2,39 @@
 
 #include "algo.h"
 
+struct Node
+{
+    explicit Node(const std::string& name) : name(name) {}
+
+    Node* left = nullptr;
+    Node* right = nullptr;
+
+    std::string name;
+};
+
+void f(Node* n)
+{
+    if (!n)
+        return;
+
+    std::cout << n->name << std::endl;
+}
+
 int main(int argc, char** argv)
 {
-    size_t N;
-    std::cout << "1..N sequence. Enter N = ";
-    std::cin >> N;
+    // root
+    Node* root = new Node("root");
 
-    int* sorted_input_seq = new int[N];
-    for (size_t it = 0; it < N; ++it)
-        sorted_input_seq[it] = (int)(it + 1);
+    // root->left
+    root->left = new Node("root->left");
 
-    std::string permutations = "";
-    AlgoCpp::GetPermutations(permutations, sorted_input_seq, N);
+    // root->left->left
+    root->left->left = new Node("root->left->left");
 
-    std::cout << std::endl;
-    std::cout << "Generated permutations:\n" << permutations.c_str() << std::endl;
+    // root->left->right
+    root->left->right = new Node("root->left->right");
 
-    delete[] sorted_input_seq;
-
-    std::getchar();
+    AlgoCpp::bst_traversal<Node>(root, std::function<void(Node*)>(f));
 
     return 0;
 }
