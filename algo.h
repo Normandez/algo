@@ -225,6 +225,47 @@ void BSTTraversal(Node* root, std::function<void(Node*)> f = nullptr)
     BSTTraversal<Node>(root->left, f);
     BSTTraversal<Node>(root->right, f);
 }
+
+// Look-and-say sequence generator
+// Returns empty vector if 'seed' is not a digit or empty or 'gen' is 0
+// By default, generates Conway's sequence
+std::vector<std::string> LookAndSaySequence(const std::string& seed = "1", size_t gen = 5)
+{
+    std::vector<std::string> sequence;
+    sequence.reserve(gen);
+
+    if (!seed.size() or !gen)
+        return sequence;
+
+    for (const auto& d : seed)
+    {
+        if (isdigit(d) == 0)
+            return sequence;
+    }
+
+    sequence.push_back(seed);
+
+    std::string prev = seed;
+    std::string next = "";
+    for (int i = 1; i < gen; ++i)
+    {
+        int j = 0;
+        int k = 0;
+
+        while (j < prev.size())
+        {
+            while (k < prev.size() and prev[j] == prev[k]) ++k;
+            next += std::to_string(k - j) + prev[j];
+            j = k;
+        }
+
+        sequence.push_back(next);
+        prev = next;
+        next = "";
+    }
+
+    return sequence;
+}
 }
 
 #endif // ALGO_H
