@@ -10,6 +10,7 @@ C++ Realization of Some Algorithms
 * RLE Compression
 * Permutation Generation
 * Catalan number (the number of possible unique BSTs or the number of possible open/close parentheses)
+* BST (Binary Search Tree) Traversal
 
 # Usage
 Usage example is provided main.cpp
